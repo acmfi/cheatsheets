@@ -1,7 +1,7 @@
-- [Colección de Cheatsheets](#org387008a)
+- [Colección de Cheatsheets](#org6712c3e)
 
 
-<a id="org387008a"></a>
+<a id="org6712c3e"></a>
 
 # Colección de Cheatsheets
 
@@ -9,6 +9,6 @@ Las siguientes hojas se han realizado en LaTeX, pueden (y deben) editarse para i
 
 En este repositorio se encontrará tanto la fuente en `.tex` como la versión `.pdf`.
 
--   [Java](./java/cheasheet-java.tex)
--   [Linux](./linux/cheatsheet-linux.tex)
--   [LaTeX](./latex/cheatsheet-latex.tex)
+-   [Java](./java/cheatsheet-java.pdf)
+-   [Linux](./linux/cheatsheet-linux.pdf)
+-   [LaTeX](./latex/cheatsheet-latex.pdf)
