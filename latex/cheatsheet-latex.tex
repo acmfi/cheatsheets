@@ -1,0 +1,399 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MatPlotLib and Random Cheat Sheet
+%
+% Edited by Michelle Cristina de Sousa Baltazar
+%
+% http://matplotlib.org/api/pyplot_summary.html
+% http://matplotlib.org/users/pyplot_tutorial.html
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass{article}
+\usepackage[a4paper]{geometry}
+\usepackage{url}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usetikzlibrary{decorations,arrows.meta}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{decorations.pathmorphing}
+\usepackage{amsmath,amssymb}
+\usepackage{shortvrb}
+
+\usepackage{colortbl}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+
+\title{Cheatsheet - \LaTeX}
+\usepackage[brazilian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs}
+
+\advance\topmargin-.8in
+\advance\textheight3in
+\advance\textwidth3in
+\advance\oddsidemargin-1in
+\advance\evensidemargin-1.5in
+\parindent0pt
+\parskip2pt
+\newcommand{\hr}{\centerline{\rule{3.5in}{1pt}}}
+% \colorbox[HTML]{e4e4e4}{\makebox[\textwidth-2\fboxsep][l]{texto}
+\begin{document}
+
+\begin{center}{\huge{\textbf{Cheatsheet - \LaTeX~~~~~~~~~~~~}}}\\
+  {\large ACM UPM~~~~~~~~http://t.me/acmlatex~~~~~~~~~~~~~~~~~~~~~~~}
+\end{center}
+
+
+\tikzstyle{mybox} = [draw=black, fill=white, very thick,
+rectangle, rounded corners, inner sep=10pt, inner ysep=10pt]
+\tikzstyle{fancytitle} =[fill=black, text=white, font=\bfseries]
+% ------------ CONTEÚDO CAIXA MatPlotLib ---------------
+\begin{tikzpicture}
+  \node [mybox] (box){%
+    \begin{minipage}{0.85\textwidth}
+
+      \begin{tabular}{p{0.5\textwidth} p{0.4\textwidth}}
+        \verb|% Comentario en LateX                          | &                  \\
+        \verb|% Caracteres reservados: # $ % ^ & _ { } ~ \   | &                  \\
+        \verb|% \comando[opción1, opción2]{arg1}{arg2}       | &                  \\
+        \verb|texto normal                                   | & texto normal     \\
+        \verb|comportamiento     de~~~~~los    espacios      | & comportamiento     de~~~~~los    espacios                 \\
+        \verb|\LaTeX            % Si empieza por \, comando  | & \LaTeX           \\
+        \verb|\sigma            % Símbolos matemáticos       | & $\sigma$         \\
+        \verb|{\large Formato}  % Contextos entre llaves     | & {\large Formato} \\
+        \verb|$a = 2\pi r$      % Contexto matemático        | & $a = 2\pi r$     \\
+        \verb|\`{a}             % Algún caracter especial    | & \`{a}            \\
+        \verb|\u{a}             % Algún caracter especial    | & \u{a}            \\
+      \end{tabular}
+      % Comentario en LaTeX
+    \end{minipage}
+  };
+  % ------------ CAIXA PRELIMINARES ---------------------
+  \node[fancytitle, right=10pt] at (box.north west) {Sintaxis básica};
+\end{tikzpicture}
+
+
+% ------------ CONTEÚDO CAIXA RANDOM ---------------
+\begin{tikzpicture}
+  \node [mybox] (box){%
+    \begin{minipage}[!]{0.85\textwidth}
+      \begin{multicols*}{2}
+        \begin{minipage}{0.2\textwidth}
+\begin{verbatim}
+\begin{equation}
+  x = \frac{b^2 \pm\sqrt{b^2 - 4ac}}{2a}
+\end{equation}
+\end{verbatim}
+        \end{minipage}
+
+        \begin{minipage}[!]{.45\linewidth}
+\begin{verbatim}
+
+
+\[y = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}\]
+\end{verbatim}
+        \end{minipage}
+
+        \begin{minipage}[!]{.45\linewidth}
+          \begin{equation}
+            x = \frac{b^2 \pm\sqrt{b^2 - 4ac}}{2a}
+          \end{equation}
+        \end{minipage}
+
+        \begin{minipage}[!]{.45\linewidth}
+          \[y = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}\]
+        \end{minipage}
+      \end{multicols*}
+    \end{minipage}
+  };
+  % ------------ CAIXA RANDOM ---------------------
+  \node[fancytitle, right=10pt] at (box.north west) {Contextos matemáticos};
+\end{tikzpicture}
+
+% ------------ CONTEUDO EXEMPLO BASICO ---------------------
+\begin{tikzpicture}
+  \node [mybox] (box){%
+    \begin{minipage}{0.85\textwidth}
+      \begin{multicols*}{2}
+        \begin{minipage}[!]{.45\linewidth}
+\begin{verbatim}
+
+
+\begin{itemize}
+\item item1
+\item item2
+\item item3
+\end{itemize}
+\end{verbatim}
+        \end{minipage}
+
+        \begin{minipage}[!]{.45\linewidth}
+\begin{verbatim}
+
+
+\begin{enumerate}
+\item Item 1
+\item Item 2
+\item Item 3
+\end{enumerate}
+\end{verbatim}
+        \end{minipage}
+
+        \begin{minipage}[!]{.45\linewidth}
+\begin{verbatim}
+
+
+\begin{description}
+\item[Etiqueta 1] Descripción
+\item[Etiqueta 2] Descripción que ocupa
+  más de una línea, por lo que salta.
+\item[Etiqueta 3] Descripción
+\end{description}
+\end{verbatim}
+
+        \end{minipage}
+
+        \begin{minipage}[!]{.45\linewidth}
+          ~\\
+          \begin{itemize}
+          \item item1
+          \item item2
+          \item item3
+          \end{itemize}
+        \end{minipage}
+
+        \begin{minipage}[!]{.45\linewidth}
+          ~\\
+          \begin{enumerate}
+          \item Item 1
+          \item Item 2
+          \item Item 3
+          \end{enumerate}
+        \end{minipage}
+
+        \begin{minipage}[!]{.9\linewidth}
+          ~\\
+          \begin{description}
+          \item[Etiqueta 1] Descripción
+          \item[Etiqueta 2] Descripción que ocupa más de una línea,
+            por lo que salta.
+          \item[Etiqueta 3] Descripción
+          \end{description}
+        \end{minipage}
+      \end{multicols*}
+    \end{minipage}
+  };
+  % ------------ EXEMPLO BASICO BOX ---------------------
+  \node[fancytitle, right=10pt] at (box.north west) {Contextos estructurados};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+  \node [mybox] (box){%
+    \begin{minipage}{0.85\textwidth}
+      \begin{tabular}{p{0.5\textwidth} p{0.4\textwidth}}
+        \verb|Fuente normal                  | & Fuente normal \\
+        \verb|\emph{Énfasis, cursiva}        | & \emph{Énfasis, cursiva} \\
+        \verb|\texttt{Monospace, teletype}   | & \texttt{Monospace, teletype} \\
+        \verb|\textsf{Sans-serif}|             & \textsl{Sans-serif} \\
+        \verb|\textsc{Small Captital}|         & \textsc{Small Captital} \\
+        \verb|\uppercase{Uppercase} |          & \uppercase{Uppercase} \\
+      \end{tabular}
+    \end{minipage}
+  };
+  % ------------ NAME ---------------------
+  \node[fancytitle, right=10pt] at (box.north west) {Formato de fuentes};
+\end{tikzpicture}
+
+
+\begin{tikzpicture}
+  \node [mybox] (box){%
+    \begin{minipage}{0.85\textwidth}
+      \begin{multicols*}{2}
+        \begin{minipage}[!]{.65\linewidth}
+\begin{verbatim}
+
+
+\includegraphics[width=.4\textwidth]{../img/acmblack.png}
+
+
+\includegraphics[width=.4\textwidth]{../img/qrcode.png}
+\end{verbatim}
+        \end{minipage}
+
+        \begin{minipage}[!]{.35\linewidth}
+          \begin{center}
+            \includegraphics[width=.4\textwidth]{../img/acmblack.png}
+            \hspace{15pt}
+            \includegraphics[width=.4\textwidth]{../img/qrcode.png}
+          \end{center}
+        \end{minipage}
+      \end{multicols*}
+    \end{minipage}
+  };
+  \node[fancytitle, right=10pt] at (box.north west) {Imágenes};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+  \node [mybox] (box){%
+    \begin{minipage}{0.85\textwidth}
+      \begin{multicols*}{2}
+        \begin{minipage}[!]{.45\linewidth}
+\begin{verbatim}
+
+\begin{tabular}{|l |l |l |}  % Otras letras: c (center) r(right) p(paragraph)
+  \hline
+  Nemónico & Operandos & Ciclos \\ \hline
+  MOVE.B   & (An), Dn  & 8(2/0) \\
+  ADD.B    & Dn, dadr  & 4(1/0)+\\
+  \hline
+\end{tabular}
+\end{verbatim}
+        \end{minipage}
+
+        \begin{minipage}[!]{.45\linewidth}
+\begin{verbatim}
+
+
+% \usepackage{booktabs}
+\begin{tabular}{l l l}
+  \toprule
+  Nemónico & Operandos & Ciclos \\ \midrule
+  MOVE.B   & (An), Dn  & 8(2/0) \\
+  ADD.B    & Dn, dadr  & 4(1/0)+\\
+  \bottomrule
+\end{tabular}
+\end{verbatim}
+        \end{minipage}
+
+
+        \begin{minipage}[!]{.45\linewidth}
+          ~\\
+          ~\\
+          ~\\
+          ~\\
+          \begin{tabular}{|l |l | l |}
+            \hline
+            Nemónico & Operandos & Ciclos \\ \hline
+            MOVE.B   & (An), Dn  & 8(2/0) \\
+            ADD.B    & Dn, dadr  & 4(1/0)+\\
+            \hline
+          \end{tabular}
+        \end{minipage}
+
+        \begin{minipage}[!]{.45\linewidth}
+          ~\\
+          ~\\
+          ~\\
+          ~\\
+          ~\\
+          \begin{tabular}{l l l}
+            \toprule
+            Nemónico & Operandos & Ciclos \\ \midrule
+            MOVE.B   & (An), Dn  & 8(2/0) \\
+            ADD.B    & Dn, dadr  & 4(1/0)+\\
+            \bottomrule
+          \end{tabular}
+        \end{minipage}
+      \end{multicols*}
+    \end{minipage}
+  };
+  \node[fancytitle, right=10pt] at (box.north west) {Tablas};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+  \node [mybox] (box){%
+    \begin{minipage}{0.85\textwidth}
+      \begin{multicols*}{2}
+        \begin{minipage}[!]{.45\linewidth}
+\begin{verbatim}
+
+\section{Sección 1}
+
+\subsection{Subsección 1.1}
+\subsubsection{Subsubsección 1.1.1}
+
+\subsection{Subsección 1.2}
+
+\section{Sección 2}
+\end{verbatim}
+        \end{minipage}
+
+        \begin{minipage}[!]{.8\linewidth}
+          \section{Sección 1}
+
+          \subsection{Subsección 1.1}
+          \subsubsection{Subsubsección 1.1.1}
+
+          \subsection{Subsección 1.2}
+
+          \section{Sección 2}
+        \end{minipage}
+      \end{multicols*}
+
+    \end{minipage}
+
+  };
+  \node[fancytitle, right=10pt] at (box.north west) {Secciones};
+\end{tikzpicture}
+
+
+\begin{tikzpicture}
+  \node [mybox] (box){%
+    \begin{minipage}{0.85\textwidth}
+\begin{verbatim}
+
+\documentclass[11pt]{article} %% letter, report, chapter
+
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper]{geometry}
+\usepackage[hidelinks=true]{hyperref}
+
+\usepackage{graphicx}
+
+\title{Título del documento}
+\author{ACM UPM}
+\date{\today}
+
+
+\begin{document}
+
+\maketitle
+
+%% Aquí se empieza a escribir el contenido
+
+\end{document}
+
+\end{verbatim}
+    \end{minipage}
+
+  };
+  \node[fancytitle, right=10pt] at (box.north west) {Documento};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+  \node [mybox] (box){%
+    \begin{minipage}{0.85\textwidth}
+\begin{verbatim}
+
+
+
+
+
+
+
+
+
+
+
+
+\end{verbatim}
+    \end{minipage}
+  };
+  \node[fancytitle, right=10pt] at (box.north west) {Notas};
+\end{tikzpicture}
+\end{document}

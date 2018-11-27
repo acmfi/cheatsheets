@@ -1,0 +1,470 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MatPlotLib and Random Cheat Sheet
+%
+% Edited by Michelle Cristina de Sousa Baltazar
+%
+% http://matplotlib.org/api/pyplot_summary.html
+% http://matplotlib.org/users/pyplot_tutorial.html
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass{article}
+\usepackage[landscape]{geometry}
+\usepackage{url}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathmorphing}
+\usepackage{amsmath,amssymb}
+
+\usepackage{colortbl}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+
+\title{Cheatsheet - Introducción a la Programación}
+\usepackage[brazilian]{babel}
+\usepackage[utf8]{inputenc}
+
+\advance\topmargin-.8in
+\advance\textheight3in
+\advance\textwidth3in
+\advance\oddsidemargin-1.5in
+\advance\evensidemargin-1.5in
+\parindent0pt
+\parskip2pt
+\newcommand{\hr}{\centerline{\rule{3.5in}{1pt}}}
+%\colorbox[HTML]{e4e4e4}{\makebox[\textwidth-2\fboxsep][l]{texto}
+\begin{document}
+
+\begin{center}{\huge{\textbf{Cheatsheet - Introducción a la Programación}}}\\
+{\large ACM UPM}
+\end{center}
+\begin{multicols*}{3}
+
+\tikzstyle{mybox} = [draw=black, fill=white, very thick,
+    rectangle, rounded corners, inner sep=10pt, inner ysep=10pt]
+\tikzstyle{fancytitle} =[fill=black, text=white, font=\bfseries]
+%------------ CONTEÚDO CAIXA RANDOM ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+\begin{verbatim}
+javac Mi_fichero.java
+java  Mi_fichero
+\end{verbatim}
+    \end{minipage}
+};
+%------------ CAIXA RANDOM ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Compilar y ejecutar};
+\end{tikzpicture}
+
+
+%------------ CONTEÚDO CAIXA MatPlotLib ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+  \begin{minipage}{0.3\textwidth}
+    \begin{center}
+      \begin{tabular}[h]{p{3cm} p{3cm}}
+        \hline
+        \emph{tipo}     & \emph{bits} \\ \hline
+        \textbf{int}    & 32 \\
+        \textbf{float}  & 32 \\
+        \textbf{double} & 64 \\
+        \textbf{char}   & 16 \\
+        \textbf{Boolean}& \texttt{true | false} \\ \hline
+      \end{tabular}
+    \end{center}
+  Declarar una variable (\emph{[ ] significa que puede estar o no}):
+
+  \texttt{tipo nombre\_variable [= valor];}\\
+  \texttt{double distancia; // Declara sin valor}\\
+  \texttt{double distancia = 3.3;  // Declara con valor}\\
+\end{minipage}
+};
+%------------ CAIXA PRELIMINARES ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Tipos y variables};
+\end{tikzpicture}
+%------------ CONTEUDO EXEMPLO BASICO ---------------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+      \begin{center}
+        \begin{tabular}[h]{l l l}
+          \hline
+          && Aritméticos \\ \hline
+          +    & +=   & \texttt{variable}++\\
+          -    & -=   & - -\texttt{variable}\\
+          *    & *=   & \\
+          /    & /=   & \\
+          \%   & \%=  & \\ \hline
+          && Lógicos \\\hline
+          \&\& & $\parallel$ & \\ \hline
+          && Relacionales \\\hline
+          ==  & != $<=$ ~ $>=$  & \\
+        \end{tabular}
+      \end{center}
+    \end{minipage}
+};
+%------------ EXEMPLO BASICO BOX ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Operadores};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+  \node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+
+\begin{verbatim}
+switch (variable_a_comparar) {
+  case valor: instrucción; [break;]
+  default: ;
+}
+\end{verbatim}
+\end{minipage}
+};
+\node[fancytitle, right=10pt] at (box.north west) {Control de flujo - Switch};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+  \node[] {
+    \begin{minipage}{0.3\textwidth}
+      \begin{center}
+        \includegraphics[width=0.3\textwidth]{../img/acmblack.png}
+        \hspace{15pt}
+        \includegraphics[width=0.3\textwidth]{../img/qrcode.png}
+      \end{center}
+
+    \end{minipage}
+  };
+  \node[] at (1.6,-1.2) {Únete a ACM};
+\end{tikzpicture}
+
+%------------ CONTEUDO DOIS EIXOS ---------------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+  También conocido como ``control de flujo''. Permite cambiar \emph{qué} se ejecuta según ciertas \emph{condiciones}.
+
+\begin{verbatim}
+if (condición) {
+  haz esto;
+}
+
+if (condición) {
+  haz esto;
+}else{ // Si no se cumple la condición
+  haz lo otro;
+}
+
+if (condición){
+  haz esto;
+}else if(condición2){ //Si no, si...
+  haz esto otro;
+}
+\end{verbatim}
+  Los condicionales se pueden anidar \emph{ad infinitum}.
+  Equivalencia en condicionales:
+
+\begin{verbatim}
+if (condición) {
+  if (condición2){ }
+}
+
+if (condición && condición2) { }
+\end{verbatim}
+    \end{minipage}
+};
+%------------ DOIS EIXOS BOX ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Control de flujo - Condicionales};
+\end{tikzpicture}
+%------------ CONTEÚDO COMANDOS DE TEXTO ---------------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+\begin{verbatim}
+for ([declarar var];[cond];[op tras bloque]){}
+while([condición]){}
+\end{verbatim}
+
+  Serían válidos por tanto:
+
+\begin{verbatim}
+for(;;){}
+while(true){}
+\end{verbatim}
+
+  Correspondencia entre bucles:
+\begin{verbatim}
+for (int i=0;i<10;i++){
+  System.out.println(i);
+}
+
+int i=0;
+while(i<10){ System.out.println(i); i++;}
+\end{verbatim}
+    \end{minipage}
+};
+%------------ COMANDOS DE TEXTO BOX ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Bucles - for y while};
+\end{tikzpicture}
+%------------ CONTEUDO PROPRIEDADES ---------------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+\begin{verbatim}
+(tipo|void) nombre ([argumentos]){}
+int duplicar (int x) { return x*2; }
+void no_devuelve () { System.out.println("<3"); }
+
+
+class Clase {
+  public static void main (String[] args) (
+    //Código a ejecutar al llamarse con java
+  }
+}
+
+\end{verbatim}
+  La función puede tener \emph{modificadores} como: \texttt{public, private, static}. Esto queda fuera del temario de Prog I.
+
+    \end{minipage}
+};
+%------------ PROPRIEDADES BOX ----------------
+\node[fancytitle, right=10pt] at (box.north west) {Funciones};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\node [mybox] (box){%
+  \begin{minipage}{0.3\textwidth}
+    \begin{center}
+      \begin{tabular}{|cc|cc|cc|}
+        \hline
+        13          & CR         & 71         & G            & 100 & d               \\ \hline
+        32          &            & 72         & H            & 101 & e               \\ \hline
+        40          & (          & 73         & I            & 102 & f               \\ \hline
+        41          & )          & 74         & J            & 103 & g               \\ \hline
+        42          & *          & 75         & K            & 104 & h               \\ \hline
+        43          & +          & 76         & L            & 105 & i               \\ \hline
+        44          & ,          & 77         & M            & 106 & j               \\ \hline
+        \textbf{48} & \textbf{0} & 78         & N            & 107 & k               \\ \hline
+        49          & 1          & 79         & O            & 108 & l               \\ \hline
+        50          & 2          & 80         & P            & 109 & m               \\ \hline
+        51          & 3          & 81         & Q            & 110 & n               \\ \hline
+        52          & 4          & 82         & R            & 111 & o               \\ \hline
+        53          & 5          & 83         & S            & 112 & p               \\ \hline
+        54          & 6          & 84         & T            & 113 & q               \\ \hline
+        55          & 7          & 85         & U            & 114 & r               \\ \hline
+        56          & 8          & 86         & V            & 115 & s               \\ \hline
+        57          & 9          & 87         & W            & 116 & t               \\ \hline
+        \textbf{65} & \textbf{A} & 88         & X            & 117 & u               \\ \hline
+        66          & B          & 89         & Y            & 118 & v               \\ \hline
+        67          & C          & 90         & Z            & 119 & w               \\ \hline
+        68          & D          & \textbf{97}& \textbf{a}   & 120 & x               \\ \hline
+        69          & E          & 98         & b            & 121 & y               \\ \hline
+        70          & F          & 99         & c            & 122 & z               \\ \hline
+      \end{tabular}
+    \end{center}
+  \end{minipage}
+};
+\node[fancytitle, right=10pt] at (box.north west) {Anexo};
+\end{tikzpicture}
+
+\vspace{15pt}{\tiny ** La asociación no se hace responsable del
+  mal uso de este documento.}
+
+\begin{tikzpicture}
+  \node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+      \begin{center}
+\begin{verbatim}
+Creación de arrays:
+new tipo[n] //Crea un array vacío de tamaño n
+<nombre_array> = {e1, e2, ...., en}
+
+new tipo[] {e1, e2, ..., en}
+//Crea un array con los elementos designado.
+
+
+Tamaño de un array:
+    Los arrays empiezan en 0 y acaban en -1.
+    Se puede comprobar su longitud con:
+        <nombre_del_array>.length;
+\end{verbatim}
+        \end{center}
+    \end{minipage}
+  };
+  \node[fancytitle, right=10pt] at (box.north west) {Arrays};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+  \node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+      \begin{center}
+      \begin{tabular}{|cc|c|}
+      \hline
+      \textbf{Funciones Útiles} && \textbf{Descripción} \\ \hline
+      int length(); && Devuelve la longitud \\ \hline
+      char charAt(int i) && Devuelve el carácter en i \\ \hline
+      \end{tabular}
+      \end{center}
+\begin{verbatim}
+Si queremos concatenar dos Strings
+ debemos usar el operador '+':
+
+String x = "Cha" + "chi"; // x = Chachi
+
+Se pueden comparar dos strings
+usando .equals(String).
+
+s1 = "Chachi";
+s2 = "Cha" + "chi";
+s1 == s2; // Devuelve false
+s1.equals(s2) // Devuelve true
+\end{verbatim}
+  \end{minipage}
+  };
+  \node[fancytitle, right=10pt] at (box.north west) {Manejo de Strings};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+    \node [mybox] (box){%
+      \begin{minipage}{0.3\textwidth}
+\begin{verbatim}
+Los modificadores indican a que clases,
+atributos o métodos se puede acceder
+\end{verbatim}
+        \begin{center}
+      \begin{tabular}{|cc|cc|c|}
+        \hline
+        && \textbf{Clase} && \textbf{Paquete} \\ \hline
+        \textbf{Private} && OK && NO \\ \hline
+        \textbf{sin modificador} && OK && OK \\ \hline
+        \textbf{protected} && OK && OK \\ \hline
+        \textbf{public} && OK && OK \\ \hline
+        && \textbf{Herencia} && \textbf{Otros} \\ \hline
+        \textbf{Private} && NO && NO \\ \hline
+        \textbf{sin modificador} && NO && NO \\ \hline
+        \textbf{protected} && OK && NO \\ \hline
+        \textbf{public} && OK && OK \\ \hline
+      \end{tabular}
+      \end{center}
+    \end{minipage}
+  };
+  \node[fancytitle, right=10pt] at (box.north west) {Clases e instancias};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+  \node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+\begin{verbatim}
+ public class Padre {
+   public int X() {
+   }
+}
+public class Hijo extends Padre {
+   public int X() {
+     // Este método pertenece al padre,
+     // pero el hijo es capaz de heredarlo,
+     // aunque también es capaz de
+     // sobreescribir.
+   }
+}
+
+- Upcasting de un tipo a otro cuando se tiene
+la certeza de que sea interpretable.
+- Downcasting de un tipo a otro cuando no se
+está seguros de que sea interpretable.
+
+Vehiculo obj1 = new Coche();
+Coche c1 = (Coche) obj1;      // Downcasting
+
+*La clase String extiende de CharSequence*
+String str = "";
+CharSequence chs = str;       // Upcasting
+
+- Existe el operador instanceof que permite
+comprobar si el objeto de la izquierda es
+hijo del de la derecha.
+
+Vehiculo v1 = new Coche();
+Vehiculo v2 = new Camion();
+
+v1 instanceof Coche; // true
+v2 instanceof Camion; // true
+v2 instanceof Coche; // false
+
+- Las clases abstractas están implementadas
+parcialmente, algunos métodos los tienen que
+implementar las clases hijas.
+
+public abstract class Multiplicador {
+   public double multiplicar(double numero) {
+       return base * altura;
+    }
+
+    public abstract double factor();
+}
+\end{verbatim}
+    \end{minipage}
+    };
+    \node[fancytitle, right=10pt] at (box.north west) {Herencia};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+  \node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+\begin{verbatim}
+Las interfaces solo definen los métodos,
+no el cuerpo
+
+public class Cubo implements Figura3D {
+    private double lado;
+
+    public Cubo(double lado) {
+        this.lado = lado;
+    }
+
+    public double volumen() {
+        return lado * lado * lado;
+    }
+}
+\end{verbatim}
+    \end{minipage}
+  };
+  \node[fancytitle, right=10pt] at (box.north west) {Interfaces};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+  \node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+\begin{verbatim}
+La identidad es la región de memoria que
+ocupa nuestra instancia y, por tanto, es
+algo único a cada una. Se puede comparar
+con el operador ==.
+
+Coche c1 = new Coche("1234ABC", "rojo");
+Coche c2 = c1;
+
+c1 == c2; //true
+
+
+El estado es el conjunto de los valores de
+los atributosde una instancia. Solo se puede
+comparar con .equals si antes se ha
+modificado el método.
+
+*Una vez cambiado el método .equals*
+Coche c1 = new Coche("1234ABC", "rojo");
+Coche c2 = new Coche("1234ABC", "rojo");
+
+c1.equals(c2); // true
+\end{verbatim}
+    \end{minipage}
+  };
+  \node[fancytitle, right=10pt] at (box.north west) {Identidad vs. Estado};
+\end{tikzpicture}
+
+\end{multicols*}
+\end{document}

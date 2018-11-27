@@ -1,0 +1,529 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MatPlotLib and Random Cheat Sheet
+%
+% Edited by Michelle Cristina de Sousa Baltazar
+%
+% http://matplotlib.org/api/pyplot_summary.html
+% http://matplotlib.org/users/pyplot_tutorial.html
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass{article}
+\usepackage[landscape]{geometry}
+\usepackage{url}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usetikzlibrary{decorations,arrows.meta}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{decorations.pathmorphing}
+\usepackage{amsmath,amssymb}
+
+\usepackage{colortbl}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+
+\title{Cheatsheet - Linux}
+\usepackage[brazilian]{babel}
+\usepackage[utf8]{inputenc}
+
+\advance\topmargin-.8in
+\advance\textheight3in
+\advance\textwidth3in
+\advance\oddsidemargin-1.5in
+\advance\evensidemargin-1.5in
+\parindent0pt
+\parskip2pt
+\newcommand{\hr}{\centerline{\rule{3.5in}{1pt}}}
+%\colorbox[HTML]{e4e4e4}{\makebox[\textwidth-2\fboxsep][l]{texto}
+\begin{document}
+
+\begin{center}{\huge{\textbf{Cheatsheet - Linux}}}\\
+{\large ACM UPM}
+\end{center}
+\begin{multicols*}{3}
+
+\tikzstyle{mybox} = [draw=black, fill=white, very thick,
+    rectangle, rounded corners, inner sep=10pt, inner ysep=10pt]
+    \tikzstyle{fancytitle} =[fill=black, text=white, font=\bfseries]
+%------------ CONTEÚDO CAIXA MatPlotLib ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+\begin{minipage}{0.3\textwidth}
+\begin{verbatim}
+.           # Directorio actual
+..          # Directorio superior
+/           # Directorio raíz
+~           # HOME del usuario (virgulilla)
+\end{verbatim}
+\end{minipage}
+};
+%------------ CAIXA PRELIMINARES ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Definiciones};
+\end{tikzpicture}
+
+
+%------------ CONTEÚDO CAIXA RANDOM ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+\begin{verbatim}
+pwd         # Print Working Directory
+
+cd carpeta  # Change Directory (a carpeta)
+cd ..       # Moverse al directorio superior
+cd          # Moverse a HOME
+cd ~        # Moverse a HOME
+cd /        # Ir a la raíz del sistema
+cd z/y/x    # Cambio a x, siguiendo la ruta
+
+ls          # Listar directorio actual (ls .)
+ls ..       # Listar directorio ..
+ls carpeta  # Lista directorio "carpeta"
+ls -a       # Listar también archivos ocultos
+ls -l       # Listar con formato
+ls -lah     # Todos los archivos formateados
+
+mv f1 f2    # Mover el fichero f1 a f2
+            # (f1 desaparece)
+            # (Si f2 existe se sobreescribe)
+
+cp f1 f2    # Copiar el fichero f1 en f2
+            # (f1 sigue existiendo)
+            # (Si f2 existe se sobreescribe)
+
+mv -r d1 d2 # Mueve recursivamente d1 a d2
+cp -r d1 d2 # Copia recursivamente d1 en d2
+
+rm f1       # Elimina el fichero f1
+rmdir d1    # Elimina el directorio vacío d1
+
+rm -r d1    # Elimina el directorio d1 y
+            #  todo su contenido
+
+################ DANGER ZONE ################
+rm -rf --no-preserve-root /
+            # NO HAGAS ESTO SOBRE TODO EN UEFI
+            #  PUEDES ROMPER TODA TU MÁQUINA
+#############################################
+\end{verbatim}
+\end{minipage}
+};
+%------------ CAIXA RANDOM ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Movimiento básico};
+\end{tikzpicture}
+
+%------------ CONTEUDO EXEMPLO BASICO ---------------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+      \begin{tabular}{l c c c l}
+          &          4 &          2 &          1 & \\
+        1 &            &            & \texttt{x} & Ejecución \\
+        2 &            & \texttt{w} &            & Escritura \\
+        3 &            & \texttt{w} & \texttt{x} & Escritura + Ejecución \\
+        4 & \texttt{r} &            &            & Lectura   \\
+        5 & \texttt{r} &            & \texttt{x} & Lectura + Ejecución \\
+        6 & \texttt{r} & \texttt{w} &  \texttt{} & Lectura + Escritura \\
+        7 & \texttt{r} & \texttt{w} & \texttt{x} & Lectura + Escritura
+                                                   + Ejecución \\
+      \end{tabular}
+
+      \begin{tikzpicture}
+        \node [] (rt) at (0,0) {\texttt{-} $\underbrace{\underbrace{\texttt{r -
+              x}}_{\text{usuario}}~\underbrace{\texttt{r w
+              -}}_{\text{grupo}}~\underbrace{\texttt{r - -}}_{\text{otros}}}_{\text{Permisos}}$};
+        \node [] (tipo-fichero)   at (-3.6,0) {\footnotesize
+          \begin{tabular}{r l}
+            \multicolumn{2}{l}{Tipo de fichero} \\
+            \texttt{-} & Fichero regular \\
+            \texttt{d} & Directorio \\
+          \end{tabular}
+        };
+
+        \node [] (rwx) at (1.3,1.3) {\footnotesize
+          \begin{tabular}{l}
+            \texttt{lectura}\\
+            \texttt{ejecución}\\
+            \texttt{escritura}
+          \end{tabular}
+        };
+
+        \draw [->] ([xshift=-.5cm]tipo-fichero.east) -| ([xshift=-1.6cm,yshift=1.3cm]rt.south);
+
+        \draw [->] ([xshift=.5cm,yshift=.35cm]rwx.west)  -| ([xshift=-1.32cm,yshift=-.25cm]rt.north);
+        \draw [->] ([xshift=.5cm,yshift=.0cm]rwx.west)   -| ([xshift=-.58cm,yshift=-.25cm]rt.north);
+        \draw [->] ([xshift=.5cm,yshift=-.35cm]rwx.west) -| ([xshift=.15cm,yshift=-.25cm]rt.north);
+      \end{tikzpicture}
+
+\begin{verbatim}
+chmod 755 file  # Permisos rwx/r-x/r-x
+chmod  +x file  # Añade permiso de ejecución
+chmod o-x file  # Quita ejecución a "otros"
+\end{verbatim}
+
+    \end{minipage}
+};
+%------------ EXEMPLO BASICO BOX ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Permisos de ficheros};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+\begin{verbatim}
+man ls    # Entrada del manual para ls
+man man   # Entrada del manual para man
+
+man 1     # Ejecutable o mandato de shell
+man 2     # Llamadas al sistemas
+man 3     # Llamadas a bibliotecas
+man 4     # Ficheros especiales
+man 5     # Formatos y convenciones
+man 6     # Juegos
+man 7     # Diversas
+man 8     # Administración de sistemas
+man 9     # Rutinas del núcleo
+\end{verbatim}
+    \end{minipage}
+};
+%------------ NAME ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Manuales};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+
+  \node[] at (0,2) {}; % Such padding
+
+  \node[] at (0,0) {
+    \begin{minipage}{0.3\textwidth}
+      \begin{center}
+        \includegraphics[width=0.3\textwidth]{../img/acmblack.png}
+        \hspace{15pt}
+        \includegraphics[width=0.3\textwidth]{../img/qrcode.png}
+      \end{center}
+
+    \end{minipage}
+  };
+  \node[] at (1.6,-1.4) {Únete a ACM};
+\end{tikzpicture}
+
+
+\begin{tikzpicture}
+\node [mybox] (box){%
+\begin{minipage}{0.3\textwidth}
+
+\begin{verbatim}
+# Un pipe `|` redirige la salida de un proceso
+#  a la entrada de otro
+proc1 | proc2 | proc3
+
+./h.py > o.txt     # stdout a o.txt
+./h.py >> o.txt    # stdout a o.txt, añadir
+./h.py 2> err.log  # stderr a err.log
+./h.py 2>&1        # stderr a stdout
+./h.py 2>/dev/null # stderr a null
+./h.py &>/dev/null # stdout y stderr a (null)
+
+# Cotenido de foo.txt a stdin de h.py
+python h.py < foo.txt
+\end{verbatim}
+
+\end{minipage}
+};
+\node[fancytitle, right=10pt] at (box.north west) {Entrada/Salida estándar};
+\end{tikzpicture}
+
+
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+
+      \begin{tikzpicture}
+\node [mybox] (box){%
+  \begin{minipage}{0.9\textwidth}
+
+\begin{verbatim}
+less a.txt   # Vim-like, solo lectura
+  /pattern   # Buscar patrón
+    n        # Siguiente ocurrencia
+    N        # Anterior ocurrencia
+  v          # Abrir en el editor
+\end{verbatim}
+
+    \end{minipage}
+};
+%------------ NAME ---------------------
+\node[fancytitle, right=10pt, inner sep=5pt] at (box.north west) { less };
+\end{tikzpicture}
+
+\begin{verbatim}
+cat      # Muestra el contenido
+head     # Muestra las primeras líneas
+tail     # Muestra las últimas líneas
+tail -f  # Va actualizando la salida
+
+touch f1      # Crea el fichero vacío f1
+
+grep hola file.txt    # Líneas con "hola"
+
+#Equivalente a lo anterior
+cat f1 | grep hola
+
+wc f1        # Número de palabras
+cat f1 | wc  # Número de palabras
+
+# Líneas con "int"
+cat *.java | grep int | wc -l
+
+# Muestra el contexto en N líneas
+cat *.java | grep -C 3
+\end{verbatim}
+
+    \end{minipage}
+};
+%------------ NAME ---------------------
+\node[fancytitle, right=10pt] at (box.north west) { Lectura de ficheros };
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+
+\begin{verbatim}
+
+NAME="ACM"
+
+echo NAME       # NAME
+echo $NAME      # ACM
+echo "$NAME"    # ACM
+echo '$NAME'    # $ACM
+echo "${NAME}"  # ACM
+
+if [ -z "$string" ]; then
+  echo "String vacía"
+elif [ -n "$string" ]; then
+  echo "string no está vacía"
+fi
+
+git commit && git push
+git commit || echo "Commit failed"
+
+{A,B}           # A B
+{A,B}.java      # A.tex B.java
+*.java          # Todos lo que acabe en .java
+
+for i in /etc/rc.*; do
+  echo $i
+done
+
+$#   # Número de argumentos
+$*   # Todos los argumentos
+$@   # Todos los argumentos desde el primero
+$1   # Primer argumento
+
+# https://devhints.io/bash
+\end{verbatim}
+
+    \end{minipage}
+};
+%------------ NAME ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {BASH};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+\begin{verbatim}
+# Empaqueta los ficheros
+tar cf target.tar f1 f2
+
+# Empaqueta y comprime con gzip
+tar czf target.tar.gz f1 f2
+
+# Extrae en la carpeta
+tar xf source.tar -C folder
+
+# Extrae un archivo comprimido en .
+tar xzf source.tar.gz
+
+unzip source.zip    # Extrae un .zip
+uzip -l source.zip  # Lista el contenido
+\end{verbatim}
+
+    \end{minipage}
+};
+%------------ NAME ---------------------
+\node[fancytitle, right=10pt] at (box.north west) { Archivos comprimidos };
+\end{tikzpicture}
+
+
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+
+\begin{verbatim}
+xrandr      # Muestra las pantallas
+
+# Salida DP1 en el modo 1920x1080
+xrandr --output DP1 --mode 1920x1080
+
+# Consulta por un modo para la resolución dada
+cvt 1920 1080
+
+# Crea un modo (usando la salida de cvt)
+xrandr --newmode "1920x1080_60.00" [...]
+
+# Añade el modo a una pantalla
+xrandr --addmode DP1 "1920x1080_60.00"
+
+# Intenta aplicar la mejor resolución posible
+#  a las pantallas que detecte
+xrandr --auto
+\end{verbatim}
+
+    \end{minipage}
+};
+%------------ NAME ---------------------
+\node[fancytitle, right=10pt] at (box.north west) { Pantallas };
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+\begin{verbatim}
+ssh user@host    # Login con user en host
+ssh host         # Login con $(whoami) en host
+ssh -p 2222 host # Usar el puerto 2222
+\end{verbatim}
+
+\begin{tikzpicture}
+\node [mybox] (box){%
+  \begin{minipage}{0.9\textwidth}
+
+\begin{verbatim}
+
+Host triqui
+HostName triqui2.fi.upm.es
+         User   wXXXXXX
+         Port   22
+\end{verbatim}
+  \end{minipage}
+};
+%------------ NAME ---------------------
+\node[fancytitle, right=10pt, inner sep=5pt] at (box.north west) { .ssh/config };
+\end{tikzpicture}
+
+\begin{verbatim}
+ssh triqui       # Usa la configuración
+
+ssh-keygen -t rsa -b 4096 -C "comment/email"
+
+ssh-copy-id -i ~/.ssh/id_rsa host
+\end{verbatim}
+
+\end{minipage}
+};
+%------------ NAME ---------------------
+\node[fancytitle, right=10pt] at (box.north west) { SSH };
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+
+\begin{verbatim}
+bash
+zsh
+
+# Personalización: oh-my-zsh
+# https://github.com/robbyrussell/oh-my-zsh
+# Configuración en .bashrc .zshrc
+\end{verbatim}
+
+\begin{tikzpicture}
+\node [mybox] (box){%
+  \begin{minipage}{0.9\textwidth}
+
+\begin{verbatim}
+alias vim='emacsclient -nw -c -a ""'
+\end{verbatim}
+  \end{minipage}
+};
+%------------ NAME ---------------------
+\node[fancytitle, right=10pt, inner sep=5pt] at (box.north west) { .zshrc };
+\end{tikzpicture}
+
+    \end{minipage}
+};
+%------------ NAME ---------------------
+\node[fancytitle, right=10pt] at (box.north west) { Terminales };
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\node [mybox] (box){%
+  \begin{minipage}{0.3\textwidth}
+
+\begin{verbatim}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{verbatim}
+
+    \end{minipage}
+};
+%------------ NAME ---------------------
+\node[fancytitle, right=10pt] at (box.north west) { Notas };
+\end{tikzpicture}
+
+
+\end{multicols*}
+\end{document}
